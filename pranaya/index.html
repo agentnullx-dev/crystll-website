@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Best Sister Award — Pranaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,500;1,500;0,600&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#fdf0f2;
+    --cream:#fff9f4;
+    --rose-deep:#c23d63;
+    --rose-mid:#e26f92;
+    --rose-light:#f6c3d3;
+    --gold:#c9974a;
+    --gold-light:#e8caa0;
+    --plum:#4a1f33;
+    --thread-teal:#a9c2bd;
+    --thread-lav:#b6a7ce;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 12% 18%, var(--thread-lav) 0%, transparent 32%),
+      radial-gradient(circle at 88% 82%, var(--thread-teal) 0%, transparent 32%),
+      var(--blush);
+    font-family:'Poppins', sans-serif;
+    color:var(--plum);
+    min-height:100vh;
+    padding:48px 18px 80px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:56px;
+    overflow-x:hidden;
+  }
+
+  /* ---------- floating thread decorations ---------- */
+  .thread{
+    position:fixed;
+    pointer-events:none;
+    opacity:0.35;
+    z-index:0;
+  }
+
+  /* ---------- CERTIFICATE ---------- */
+  .certificate{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:760px;
+    background:
+      radial-gradient(circle at 50% 0%, #fff 0%, var(--cream) 55%);
+    border-radius:18px;
+    padding:56px 44px 48px;
+    box-shadow:0 30px 60px -20px rgba(74,31,51,0.35), 0 0 0 1px rgba(201,151,74,0.15);
+    text-align:center;
+    animation:riseIn 1s cubic-bezier(.2,.8,.2,1) both;
+    overflow:hidden;
+  }
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(28px) scale(.98);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+  }
+  .certificate::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1.5px solid var(--gold-light);
+    border-radius:12px;
+    pointer-events:none;
+  }
+
+  .bow-wrap{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:min(680px, 130%);
+    z-index:0;
+    opacity:0.22;
+    pointer-events:none;
+  }
+  .cert-content{
+    position:relative;
+    z-index:1;
+  }
+
+  .eyebrow{
+    letter-spacing:.32em;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin:6px 0 2px;
+  }
+
+  h1.title{
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size:clamp(34px, 6vw, 54px);
+    margin:2px 0 6px;
+    color:var(--rose-deep);
+    letter-spacing:.02em;
+  }
+
+  .subtitle{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:clamp(18px,2.6vw,22px);
+    color:var(--plum);
+    margin:0 0 26px;
+  }
+
+  .presented-to{
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#8a5a6b;
+    margin-bottom:10px;
+  }
+
+  .name{
+    font-family:'Dancing Script', cursive;
+    font-weight:700;
+    font-size:clamp(40px,7vw,64px);
+    color:var(--rose-deep);
+    margin:0 0 6px;
+    line-height:1;
+  }
+  .name-underline{
+    width:min(70%,320px);
+    height:2px;
+    margin:0 auto 30px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .reason{
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(18px,2.8vw,21px);
+    line-height:1.6;
+    max-width:520px;
+    margin:0 auto 34px;
+    color:#5c3145;
+  }
+  .reason b{ color:var(--rose-deep); font-weight:600; }
+
+  .sign-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    max-width:560px;
+    margin:0 auto;
+  }
+  .sign-block{ flex:1; text-align:center; }
+  .sign-line{
+    border-top:1.4px solid #c79aa8;
+    margin-bottom:8px;
+    height:30px;
+  }
+  .sign-label{
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#8a5a6b;
+  }
+  .sign-script{
+    font-family:'Dancing Script', cursive;
+    font-size:22px;
+    color:var(--rose-deep);
+    margin-bottom:2px;
+  }
+
+  .seal{
+    width:88px;
+    margin:0 auto -10px;
+    position:relative;
+    top:6px;
+  }
+
+  /* ---------- MESSAGE CARD ---------- */
+  .message{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:640px;
+    background:linear-gradient(180deg, #fff 0%, var(--blush) 100%);
+    border-radius:22px;
+    padding:44px 38px;
+    box-shadow:0 24px 50px -24px rgba(74,31,51,0.3);
+    text-align:center;
+    animation:riseIn 1s cubic-bezier(.2,.8,.2,1) both;
+    animation-delay:.15s;
+    animation-fill-mode:backwards;
+  }
+  .rakhi{
+    width:70px;
+    margin:0 auto 14px;
+  }
+  .message h2{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:clamp(24px,4vw,30px);
+    color:var(--rose-deep);
+    margin:0 0 4px;
+  }
+  .message .tag{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:17px;
+    color:#8a5a6b;
+    margin-bottom:22px;
+  }
+  .message p{
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    line-height:1.8;
+    color:#4a2333;
+    text-align:left;
+    margin:0 0 16px;
+  }
+  .message p:last-of-type{ margin-bottom:0; }
+  .signoff{
+    margin-top:26px;
+    font-family:'Dancing Script', cursive;
+    font-size:26px;
+    color:var(--rose-deep);
+  }
+
+  @media (max-width:520px){
+    .certificate{padding:40px 22px 34px;}
+    .sign-row{flex-direction:column; gap:18px;}
+    .message{padding:34px 22px;}
+    .message p{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+
+<svg class="thread" style="top:6%; left:2%; width:120px;" viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50 0 C 20 60, 80 100, 40 160 S 70 260, 30 300" stroke="#b6a7ce" stroke-width="2" fill="none"/>
+</svg>
+<svg class="thread" style="bottom:4%; right:3%; width:130px;" viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60 0 C 90 60, 20 110, 60 170 S 30 260, 70 300" stroke="#c9974a" stroke-width="2" fill="none"/>
+</svg>
+
+<!-- ============ CERTIFICATE ============ -->
+<div class="certificate">
+
+  <div class="bow-wrap">
+    <svg viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
+      <path d="M110 68 C 60 10, 10 15, 12 45 C 14 78, 70 78, 110 68 Z" fill="var(--rose-light)" stroke="var(--rose-deep)" stroke-width="1.5"/>
+      <path d="M110 68 C 160 10, 210 15, 208 45 C 206 78, 150 78, 110 68 Z" fill="var(--rose-mid)" stroke="var(--rose-deep)" stroke-width="1.5"/>
+      <path d="M110 68 C 90 30, 60 8, 45 28 C 35 42, 60 62, 110 68 Z" fill="var(--rose-mid)" opacity="0.9"/>
+      <path d="M110 68 C 130 30, 160 8, 175 28 C 185 42, 160 62, 110 68 Z" fill="var(--rose-light)" opacity="0.9"/>
+      <path d="M95 74 L 70 128 L 95 116 L 108 132 L 108 78 Z" fill="var(--rose-mid)" stroke="var(--rose-deep)" stroke-width="1.2"/>
+      <path d="M125 74 L 150 128 L 125 116 L 112 132 L 112 78 Z" fill="var(--rose-light)" stroke="var(--rose-deep)" stroke-width="1.2"/>
+      <ellipse cx="110" cy="68" rx="14" ry="11" fill="var(--rose-deep)"/>
+    </svg>
+  </div>
+
+  <div class="cert-content">
+    <div class="eyebrow">Certificate of Recognition</div>
+    <h1 class="title">CERTIFICATE</h1>
+    <p class="subtitle">on being the best sister ever</p>
+
+    <div class="presented-to">This certificate is proudly presented to</div>
+    <div class="name">Pranaya</div>
+    <div class="name-underline"></div>
+
+    <p class="reason">
+      For being my <b>paji</b> in every way that matters, for the constant teasing,
+      and for always showing up the moment it actually counts.
+    </p>
+
+    <div class="seal">
+      <svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+        <path d="M35 60 L20 125 L50 108 L65 122 L82 62 Z" fill="var(--rose-mid)"/>
+        <path d="M65 60 L80 125 L50 108 L35 122 L18 62 Z" fill="var(--rose-deep)"/>
+        <circle cx="50" cy="45" r="34" fill="var(--gold)"/>
+        <circle cx="50" cy="45" r="27" fill="var(--rose-deep)"/>
+        <circle cx="50" cy="45" r="20" fill="var(--rose-mid)"/>
+        <text x="50" y="53" font-family="Playfair Display, serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="700">1</text>
+      </svg>
+    </div>
+
+    <div class="sign-row">
+      <div class="sign-block">
+        <div class="sign-script">28 August 2026</div>
+        <div class="sign-line"></div>
+        <div class="sign-label">Date</div>
+      </div>
+      <div class="sign-block">
+        <div class="sign-script">Adithiyaa</div>
+        <div class="sign-line"></div>
+        <div class="sign-label">Signature</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ RAKSHA BANDHAN MESSAGE ============ -->
+<div class="message">
+  <svg class="rakhi" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="35" r="26" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="2"/>
+    <circle cx="50" cy="35" r="17" fill="var(--rose-mid)"/>
+    <circle cx="50" cy="35" r="8" fill="#fff"/>
+    <circle cx="50" cy="35" r="4" fill="var(--rose-deep)"/>
+    <path d="M28 40 L10 55 M72 40 L90 55 M50 60 L50 82" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="10" cy="55" r="3" fill="var(--rose-deep)"/>
+    <circle cx="90" cy="55" r="3" fill="var(--rose-deep)"/>
+    <circle cx="50" cy="82" r="3" fill="var(--rose-deep)"/>
+  </svg>
+
+  <h2>Happy Raksha Bandhan, Pranaya 🎀</h2>
+  <div class="tag">to my paji, my sister, my person</div>
+
+  <p>
+    Pranaya, "paji" was never really about being older or in charge — it's just always been
+    my way of saying you're the one I look up to, the one who sorts things out, and the one
+    I know will always have my side no matter what.
+  </p>
+  <p>
+    On this Raksha Bandhan, I want you to know that this rakhi isn't just a thread — it's
+    a promise. A promise that I'll always be there for you, the way you've always been
+    there for me. Thank you for your patience, your laughter, and your endless love.
+  </p>
+
+  <div class="signoff">Happy Raksha Bandhan, my forever person 💗<br>28 August 2026<br>— Adithiyaa</div>
+</div>
+
+</body>
+</html>
